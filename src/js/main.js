@@ -1,3 +1,4 @@
+import { horizontal, vertical } from "./systems/mapCollision.js";
 import { playerMovement } from "./systems/playerMovement.js";
 import { render } from "./systems/render.js";
 import { coinAnimator } from "./systems/coins.js";
@@ -18,10 +19,10 @@ function loop(timestamp) {
 
     if (dt > 0.1) dt = 0.1;
 
-    playerMovement(dt);  
+    playerMovement(dt);
     for (const enemy of enemies) {
         enemy.update(dt, player);
-    } 
+    }
     coinAnimator.update(dt); // Should make a file in the future that will hold all collectibles to not clutter up main.js.
     render();
 
