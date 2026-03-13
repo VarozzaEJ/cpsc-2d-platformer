@@ -18,66 +18,74 @@
   <body class="bg-image">
     <!-- Main Container For Grid -->
     <div class="container">
-      <!-- Padding on top -->
       <div class="row">
-        <div
-          class="col-6 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-0 transparent-edges"
-        >
-          <div class="pt-5"></div>
-        </div>
-      </div>
+        <div class="col-md-6">
+          <!-- Padding on top -->
+          <div class="row">
+            <div
+              class="col-6 w-100 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-0 transparent-edges"
+            >
+              <div class="pt-5"></div>
+            </div>
+          </div>
 
-      <!-- Picture for game title -->
-      <div class="row">
-        <div
-          class="col-6 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-0 transparent-edges"
-        >
-          <img
-            src="src/assets/sprites/ui/temp-transparent-title.png"
-            alt=""
-            class="img-fluid rounded-2 mb-5 text-start"
-          />
-        </div>
-      </div>
+          <!-- Picture for game title -->
+          <div class="row">
+            <div
+              class="col-6 w-100 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-0 transparent-edges"
+            >
+              <img
+                src="src/assets/sprites/ui/temp-transparent-title.png"
+                alt=""
+                class="img-fluid rounded-2 mb-5 text-start"
+              />
+            </div>
+          </div>
 
-      <!-- Where all the buttons go -->
-      <div class="row">
-        <div
-          class="col-6 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-0 transparent-edges"
-        >
-          <!-- Used a flexbox to arrage buttons -->
-          <div
-            class="d-flex flex-column justify-content-top align-items-center"
-          >
-            <a
-              href="level_one.html"
-              class="btn btn-lg btn-custom-color btn-hover rounded-1 mb-3 fs-4 fs-custom-sm text-nowrap"
+          <!-- Where all the buttons go -->
+          <div class="row">
+            <div
+              class="col-6 w-100 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-0 transparent-edges"
             >
-              <i class="bi bi-suit-diamond-fill"></i> Start New Game
-              <i class="bi bi-suit-diamond-fill"></i>
-            </a>
-            <a
-              href="#"
-              class="btn btn-lg btn-custom-color btn-hover rounded-1 mb-3 fs-4 fs-custom-sm"
-            >
-              <i class="bi bi-suit-diamond-fill"></i> Settings
-              <i class="bi bi-suit-diamond-fill"></i>
-            </a>
-            <a
-              href="#"
-              class="btn btn-lg btn-custom-color btn-hover rounded-1 fs-4 fs-custom-sm"
-            >
-              <i class="bi bi-suit-diamond-fill"></i> Credits
-              <i class="bi bi-suit-diamond-fill"></i>
-            </a>
+              <!-- Used a flexbox to arrage buttons -->
+              <div
+                class="d-flex flex-column justify-content-top align-items-center"
+              >
+                <a
+                  href="level_one.html"
+                  class="btn btn-lg btn-custom-color btn-hover rounded-1 mb-3 fs-4 fs-custom-sm text-nowrap"
+                >
+                  <i class="bi bi-suit-diamond-fill"></i> Start New Game
+                  <i class="bi bi-suit-diamond-fill"></i>
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-lg btn-custom-color btn-hover rounded-1 mb-3 fs-4 fs-custom-sm"
+                >
+                  <i class="bi bi-suit-diamond-fill"></i> Settings
+                  <i class="bi bi-suit-diamond-fill"></i>
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-lg btn-custom-color btn-hover rounded-1 fs-4 fs-custom-sm"
+                >
+                  <i class="bi bi-suit-diamond-fill"></i> Credits
+                  <i class="bi bi-suit-diamond-fill"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- If we want to add stuff below the buttons. -->
+          <div class="row d-flex justify-content-center">
+            <div
+              class="col-6 w-100 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-0 vh-100 transparent-edges"
+            ></div>
           </div>
         </div>
-      </div>
-
-      <!-- If we want to add stuff below the buttons. -->
-      <div class="row">
         <div
-          class="col-6 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-0 vh-100 transparent-edges"
+          id="saved_score_inject"
+          class="col-md-6 d-flex justify-content-center"
         ></div>
       </div>
     </div>
