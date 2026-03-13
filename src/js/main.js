@@ -6,6 +6,8 @@ import { coinAnimator } from "./systems/coins.js";
 
 let lastTime = 0;
 
+
+
 function loop(timestamp) {
 
     if (lastTime === 0) lastTime = timestamp;
