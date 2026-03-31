@@ -8,6 +8,7 @@ import { coins } from "../collectables/coins.js";
 import { hearts } from "../collectables/hearts.js";
 import { player } from "../entities/player.js";
 import { enemies } from "../main.js";
+import { sword } from "../collectables/sword.js";
 
 
 export const canvas = document.getElementById("game");
@@ -196,5 +197,10 @@ export function render() {
         heart.draw(ctx, camera);
         heart.checkCollision(player);
     });
+
+    sword.forEach(sword => {
+        sword.draw(ctx, camera)
+        sword.checkCollision(player)
+    })
 
 }

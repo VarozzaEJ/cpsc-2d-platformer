@@ -1,5 +1,7 @@
 //@ts-nocheck
-
+import { sword } from "../collectables/sword.js";
+import { coins } from "../collectables/coins.js";
+import { hearts } from "../collectables/hearts.js";
 const styles = {
   hud: {
     fontFamily: "'Press Start 2P', monospace",
@@ -82,11 +84,37 @@ const styles = {
   }
 };
 function DungeonHUD() {
+  const swordSpriteSheet = "./src/assets/sprites/collectibles/sword_HUD.png";
+  const [swordCollected, setSwordCollected] = React.useState(false);
   const [hp, setHp] = React.useState(3);
-  const maxHp = 3;
-  const [coins, setCoins] = React.useState(0);
+  const maxHp = 5;
+  const [coinCount, setCoinCount] = React.useState(0);
   const [wpnIdx, setWpnIdx] = React.useState(0);
   const hpPct = Math.round(hp / maxHp * 100);
+  // Listen for the sword collection event sent from sword.js
+  React.useEffect(() => {
+    const handleSwordCollected = event => {
+      setSwordCollected(event.detail.collected);
+    };
+    window.addEventListener("swordCollected", handleSwordCollected);
+    const handleCoinCollected = event => {
+      setCoinCount(prev => prev + 1);
+    };
+    window.addEventListener("coinCollected", handleCoinCollected);
+    const handleHeartCollected = event => {
+      setHp(prev => prev < maxHp ? prev + 1 : prev);
+    };
+    window.addEventListener("heartCollected", handleHeartCollected);
+    return () => {
+      window.removeEventListener("swordCollected", handleSwordCollected);
+      window.removeEventListener("coinCollected", handleCoinCollected);
+      window.removeEventListener("heartCollected", handleHeartCollected);
+    };
+  }, []);
+
+  //TODO add event listener for when the end of the level is finished so we can update scores in local storage
+  //TODO add damage listeners to decrease hp
+
   return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("link", {
     href: "https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap",
     rel: "stylesheet"
@@ -106,7 +134,12 @@ function DungeonHUD() {
     style: styles.weaponCell
   }, /*#__PURE__*/React.createElement("div", {
     style: styles.label
-  }, "WEAPON"), /*#__PURE__*/React.createElement("div", {
+  }, "WEAPON"), swordCollected ? /*#__PURE__*/React.createElement("div", {
+    style: styles.weaponSlot
+  }, /*#__PURE__*/React.createElement("img", {
+    src: swordSpriteSheet,
+    alt: "Sword"
+  })) : /*#__PURE__*/React.createElement("div", {
     style: styles.weaponSlot
   })), /*#__PURE__*/React.createElement("div", {
     style: styles.cell
@@ -114,7 +147,7 @@ function DungeonHUD() {
     style: styles.label
   }, "GOLD"), /*#__PURE__*/React.createElement("div", {
     style: styles.goldValue
-  }, coins)))));
+  }, coinCount)))));
 }
 (function start() {
   const renderTo = id => {
@@ -129,6 +162,5 @@ function DungeonHUD() {
     return container.__firstTimeRoot;
   };
 
-  // Render to a hidden div or wherever you want the modal to be available
   renderTo("hud");
 })();

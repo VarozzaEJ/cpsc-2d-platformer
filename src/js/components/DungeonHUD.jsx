@@ -1,5 +1,7 @@
 //@ts-nocheck
-
+import { sword } from "../collectables/sword.js";
+import { coins } from "../collectables/coins.js";
+import { hearts } from "../collectables/hearts.js";
 const styles = {
   hud: {
     fontFamily: "'Press Start 2P', monospace",
@@ -84,12 +86,42 @@ const styles = {
 };
 
 function DungeonHUD() {
+  const swordSpriteSheet = "./src/assets/sprites/collectibles/sword_HUD.png";
+  const [swordCollected, setSwordCollected] = React.useState(false);
   const [hp, setHp] = React.useState(3);
-  const maxHp = 3;
-  const [coins, setCoins] = React.useState(0);
+  const maxHp = 5;
+  const [coinCount, setCoinCount] = React.useState(0);
   const [wpnIdx, setWpnIdx] = React.useState(0);
-
   const hpPct = Math.round((hp / maxHp) * 100);
+  // Listen for the sword collection event sent from sword.js
+  React.useEffect(() => {
+    const handleSwordCollected = (event) => {
+      setSwordCollected(event.detail.collected);
+    };
+
+    window.addEventListener("swordCollected", handleSwordCollected);
+
+    const handleCoinCollected = (event) => {
+      setCoinCount((prev) => prev + 1);
+    };
+
+    window.addEventListener("coinCollected", handleCoinCollected);
+
+    const handleHeartCollected = (event) => {
+      setHp((prev) => (prev < maxHp ? prev + 1 : prev));
+    };
+
+    window.addEventListener("heartCollected", handleHeartCollected);
+
+    return () => {
+      window.removeEventListener("swordCollected", handleSwordCollected);
+      window.removeEventListener("coinCollected", handleCoinCollected);
+      window.removeEventListener("heartCollected", handleHeartCollected);
+    };
+  }, []);
+
+  //TODO add event listener for when the end of the level is finished so we can update scores in local storage
+  //TODO add damage listeners to decrease hp
 
   return (
     <div>
@@ -112,13 +144,19 @@ function DungeonHUD() {
           {/* Weapon slot */}
           <div style={styles.weaponCell}>
             <div style={styles.label}>WEAPON</div>
-            <div style={styles.weaponSlot}></div>
+            {swordCollected ? (
+              <div style={styles.weaponSlot}>
+                <img src={swordSpriteSheet} alt="Sword" />
+              </div>
+            ) : (
+              <div style={styles.weaponSlot}></div>
+            )}
           </div>
 
           {/* Gold */}
           <div style={styles.cell}>
             <div style={styles.label}>GOLD</div>
-            <div style={styles.goldValue}>{coins}</div>
+            <div style={styles.goldValue}>{coinCount}</div>
           </div>
         </div>
       </div>
@@ -140,6 +178,5 @@ function DungeonHUD() {
     return container.__firstTimeRoot;
   };
 
-  // Render to a hidden div or wherever you want the modal to be available
   renderTo("hud");
 })();

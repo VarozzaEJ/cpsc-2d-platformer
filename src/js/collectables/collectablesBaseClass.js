@@ -1,11 +1,12 @@
 export class Collectable {
-    constructor(x, y, w, h, animator) {
+    constructor(x, y, w, h, animator, name) {
         this.x = x;
         this.y = y;
         this.w = w;
         this.h = h;
         this.animator = animator;
         this.collected = false;
+        this.name = name
     }
 
     draw(ctx, camera) {
@@ -16,10 +17,10 @@ export class Collectable {
 
     checkCollision(player) {
         if (!this.collected &&
-            player.x + player.w/2 > this.x &&
-            player.x + player.w/2 < this.x + this.w &&
-            player.y + player.h/2 > this.y &&
-            player.y + player.h/2 < this.y + this.h) {
+            player.x + player.w / 2 > this.x &&
+            player.x + player.w / 2 < this.x + this.w &&
+            player.y + player.h / 2 > this.y &&
+            player.y + player.h / 2 < this.y + this.h) {
             this.collected = true;
             return true;
         }
