@@ -61,7 +61,4 @@ export class Animator {
         );
     }
 
-    
 }
-//Makes avaliable for other JS files
-window.Animator = Animator;
