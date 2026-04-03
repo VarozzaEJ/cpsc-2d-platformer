@@ -1,6 +1,7 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 let production = process.env.NODE_ENV === "production";
 
@@ -13,7 +14,11 @@ let config = {
         clean: true
     },
     devServer: {
-        static: "./dist"
+        port: 8084,
+        static: [
+            { directory: "./dist" },
+            { directory: "./src", publicPath: "/" }
+        ]
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"]
@@ -23,6 +28,11 @@ let config = {
             {
                 test: /(\.tsx$|\.ts$)/,
                 exclude: /node_modules/,
+                use: "ts-loader"
+            },
+            {
+                test: /\.js$/,
+                exclude: [/node_modules/, /src\/js/],
                 use: "ts-loader"
             },
             {
@@ -40,6 +50,11 @@ let config = {
             patterns: [
                 { from: "./src/images", to: "images" },
                 { from: "./src/bootstrap", to: "bootstrap" },
+                { from: "./src/js/main.js", to: "js/main.js" },
+                { from: "./src/js/maps", to: "js/maps" },
+                { from: "./src/js/entities", to: "js/entities" },
+                { from: "./src/js/systems", to: "js/systems" },
+                { from: "./src/js/collectables", to: "js/collectables" }
             ]
         }),
         new HtmlWebpackPlugin({
@@ -55,6 +70,7 @@ if (production) {
         new CopyPlugin({
             patterns: [
                 { from: "./src/images", to: "images" },
+                { from: "./src/bootstrap", to: "bootstrap" }
             ]
         }),
         new HtmlWebpackPlugin({

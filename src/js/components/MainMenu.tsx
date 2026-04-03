@@ -62,7 +62,7 @@ const MainMenu: React.FC<MainMenuProps> = ({onSendShownComponent}) => {
               Used a flexbox to arrage buttons */}
               <div className="d-flex flex-column align-items-center">
                 {/* try this, align-items-around, instead of -center for another option */}
-                <button className=" btn-custom-color btn  rounded-1 mb-3 fs-4 fs-custom-sm"><i className="bi bi-suit-diamond-fill pe-1"></i>Start New Game<i className="bi bi-suit-diamond-fill ps-1"></i></button>
+                <button onClick={() => handleChange("levelOne")} className=" btn-custom-color btn  rounded-1 mb-3 fs-4 fs-custom-sm"><i className="bi bi-suit-diamond-fill pe-1"></i>Start New Game<i className="bi bi-suit-diamond-fill ps-1"></i></button>
                 {/* TODO add component with tall z-index that shows up when this button is clicked. The button should only be visible on small screens. */}
                 {/* <button className=" btn-custom-color btn  rounded-1 mb-3 fs-4 fs-custom-sm"><i className="bi bi-trophy-fill pe-1"></i>View Scores<i className="bi bi-trophy-fill ps-1"></i></button> */}
                 <button onClick={() => handleChange("changeCharacter")} className=" btn-custom-color btn  rounded-1 mb-3 fs-4 fs-custom-sm"><i className="bi bi-person-standing pe-1"></i>Change Character<i className="bi bi-person-standing ps-1"></i></button>
