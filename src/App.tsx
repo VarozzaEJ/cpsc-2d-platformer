@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import MainMenu from './js/components/MainMenu';
+import CharacterSelect from './js/components/CharacterSelect';
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
                 <MainMenu onSendShownComponent = {handleComponentToShow}/>
                 }
                 {shownComponent == "changeCharacter" &&
-                <h1>Change Character</h1>
+                <CharacterSelect onSendShownComponent = {handleComponentToShow} />
                 }
             </div>
         </>
