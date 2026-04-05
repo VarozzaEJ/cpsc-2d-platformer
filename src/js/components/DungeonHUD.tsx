@@ -118,6 +118,10 @@ function DungeonHUD() {
     };
   }, []);
 
+  const saveCoins = () => {
+    
+  }
+
   //TODO add event listener for when the end of the level is finished so we can update scores in local storage
   //TODO add damage listeners to decrease hp
 
