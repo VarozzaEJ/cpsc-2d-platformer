@@ -8,7 +8,7 @@ const styles = {
     border: "3px solid #5a3e1b",
     borderTop: "3px solid #8a6030",
     borderLeft: "3px solid #8a6030",
-    width: "100%",
+    width: "fit-content",
     position: "relative",
     overflow: "hidden",
   } as React.CSSProperties,
@@ -129,7 +129,7 @@ function DungeonHUD() {
   //TODO add damage listeners to decrease hp
 
   return (
-    <div>
+    <>
       <link
         href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
         rel="stylesheet"
@@ -165,7 +165,7 @@ function DungeonHUD() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

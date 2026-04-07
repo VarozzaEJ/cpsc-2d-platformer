@@ -44,17 +44,19 @@ const SavedScore = () => {
   }, []);
   console.log(scores)
     return (
-        <>
-            <div className="container score-board">
+    <>
+      <div className="container score-board">
         <div className="">
+
           <div className="row">
             <h2 className="score-title text-center">High Scores</h2>
           </div>
+
           {scores.length > 0 ? (
             scores.map((score: Score, index: number) => (
               <div
                 key={score.name}
-                className="score-item row mb-3  p-3 border rounded"
+                className="score-item row mb-3 mx-0 p-3 border rounded"
               >
                 <div className="col-12 score-name text-warning fw-bold">
                   #{index + 1} {score.name}
@@ -73,6 +75,7 @@ const SavedScore = () => {
                     {score.coinsCollected}
                   </div>
                 </div>
+                
               </div>
             ))
           ) : (
@@ -82,9 +85,10 @@ const SavedScore = () => {
               </div>
             </div>
           )}
+
         </div>
       </div>
-        </>
+    </>
     )
 }
 
