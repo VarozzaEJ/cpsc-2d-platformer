@@ -28,12 +28,26 @@ let config = {
             {
                 test: /(\.tsx$|\.ts$)/,
                 exclude: /node_modules/,
-                use: "ts-loader"
+                use: {
+                    loader: "ts-loader",
+                    options: {
+                        compilerOptions: {
+                            noEmit: false
+                        }
+                    }
+                }
             },
             {
                 test: /\.js$/,
                 exclude: [/node_modules/, /src\/js/],
-                use: "ts-loader"
+                use: {
+                    loader: "ts-loader",
+                    options: {
+                        compilerOptions: {
+                            noEmit: false
+                        }
+                    }
+                }
             },
             {
                 test: /\.css$/,

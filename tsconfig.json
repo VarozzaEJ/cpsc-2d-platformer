@@ -2,6 +2,10 @@
   "compilerOptions": {
     "jsx": "react" /* Specify what JSX code is generated. */,
     "module": "commonjs" /* Specify what module code is generated. */,
+    "allowJs": true /* Allow JavaScript files in the program. */,
+    "checkJs": false /* Do not type-check plain JavaScript files. */,
+    "noUncheckedSideEffectImports": false /* Allow side-effect CSS imports resolved by webpack. */,
+    "noEmit": true /* Let webpack handle output generation. */,
     "sourceMap": true /* Create source map files for emitted JavaScript files. */,
     "removeComments": true /* Disable emitting comments. */,
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
