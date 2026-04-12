@@ -14,6 +14,10 @@ export class Enemy {
         this.w = 70;
         this.h = 70;
 
+        // Health/Damage
+        this.health = 1;
+        this.damage = 1;
+
         // horizontal movement
         this.vx = 0;
         this.moveSpeed = null;
