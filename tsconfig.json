@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "commonjs",
     "sourceMap": true,
     "removeComments": true,
@@ -10,7 +10,9 @@
     "skipLibCheck": true,
     "allowJs": true,
     "checkJs": false,
-    "noEmit": true
+    "outDir": "./build",
+    "rootDir": "./src"
   },
   "include": ["src/**/*", "*.d.ts"]
 }
+//TypeScript → (ts-loader) → webpack → dist/bundle.js

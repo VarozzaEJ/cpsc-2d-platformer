@@ -1,10 +1,10 @@
-import { checkHazard } from "./systems/mapCollision.js";
-import { playerMovement } from "./systems/playerMovement.js";
-import { render, initializeLevels } from "./maps/render.js";
-import { updateCollectables } from "./collectables/updateCollectables.js";
+import { checkHazard } from "./systems/mapCollision";
+import { playerMovement } from "./systems/playerMovement";
+import { render, initializeLevels } from "./maps/render";
+import { updateCollectables } from "./collectables/updateCollectables";
 
-import { player } from "./entities/player.js";
-import { enemies } from "./entities/enemy.js";
+import { player } from "./entities/player";
+import { enemies } from "./entities/enemy";
 
 import {
     combatTimers,
@@ -12,7 +12,7 @@ import {
     playerAttack,
     removeEnemy,
     resetPlayer
-} from "./systems/damageSystem.js";
+} from "./systems/damageSystem";
 
 let lastTime = 0;
 
@@ -79,16 +79,16 @@ export function startGame(canvas: HTMLCanvasElement): void {
         return;
     }
 
-    window.startGame = startGame;
+    // window.startGame = startGame;
     initializeLevels(canvas);
     requestAnimationFrame(loop);
 }
 
 // Make it available globally for the React component
-declare global {
-    interface Window {
-        startGame: (canvas: HTMLCanvasElement) => void;
-    }
-}
+// declare global {
+//     interface Window {
+//         startGame: (canvas: HTMLCanvasElement) => void;
+//     }
+// }
 
-window.startGame = startGame;
+// window.startGame = startGame;
